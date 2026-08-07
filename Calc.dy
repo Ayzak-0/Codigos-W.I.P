@@ -1,0 +1,119 @@
+#Somente Numeross
+
+def pedir_numero(mensagem):
+    while True:
+        try:
+            return float(input(mensagem))
+        except ValueError:
+            print("Erro: Digite apenas números!")
+#Calc
+
+print("=-=-=-=-= Calculadora =-=-=-=-=")
+print("")
+print("Adição +       [1]")
+print("Subtração -    [2]")
+print("Mutiplicação x [3]")
+print("Divisão ÷      [4]")
+print("Encerrar       [5]")
+
+while True:
+    
+    print("")
+    func = input("Selecione Uma Função: ")
+    
+    
+    if func == "1":         #Soma
+        print("=-=-=-=-[Adição]-=-=-=-=")
+        num1 = pedir_numero("Selecione o Primeiro Numero: ")
+        num2 = pedir_numero("Selecione o Segundo Numero: ")
+        print("")
+        resulsoma = num1 + num2
+        print("Resultado: " + str(resulsoma))
+        while True:
+            print("Deseja somar mais numeros ao resultado? [Y/N]")
+            desejo = input("").strip().upper()
+            if desejo == "Y":
+                proxnum = pedir_numero("Digite o proximo numero: ")
+                resulsoma = resulsoma + proxnum
+                print("Resultado: " + str(resulsoma))
+                
+            elif desejo == "N":
+                break
+            
+            else:
+                print("Erro: Digite Uma Opção Valida!")
+                pass
+
+    elif func == "2":       #Subtração
+        print("=-=-=-=-[Subtração]-=-=-=-=")
+        num1 = pedir_numero("Selecione o Primeiro Numero: ")
+        num2 = pedir_numero("Selecione o Segundo Numero: ")
+        print("")
+        resulsoma = num1 - num2
+        print("Resultado: " + str(resulsoma))
+        while True:
+            print("Deseja somar mais numeros ao resultado? [Y/N]")
+            desejo = input("").strip().upper()
+            if desejo == "Y":
+                proxnum = pedir_numero("Digite o proximo numero: ")
+                resulsoma = resulsoma - proxnum
+                print("Resultado: " + str(resulsoma))
+                
+            elif desejo == "N":
+                break
+            
+            else:
+                print("Erro: Digite Uma Opção Valida!")
+                pass
+            pass
+
+    elif func == "3":       #Multi
+        print("=-=-=-=-[Multiplicação]-=-=-=-=")
+        num1 = pedir_numero("Selecione o Primeiro Numero: ")
+        num2 = pedir_numero("Selecione o Segundo Numero: ")
+        print("")
+        resulsoma = num1 * num2
+        print("Resultado: " + str(resulsoma))
+        while True:
+            print("Deseja Multiplicar mais numeros sobre resultado? [Y/N]")
+            desejo = input("").strip().upper()
+            if desejo == "Y":
+                proxnum = pedir_numero("Digite o proximo numero: ")
+                resulsoma = resulsoma * proxnum
+                print("Resultado: " + str(resulsoma))
+                
+            elif desejo == "N":
+                break
+            
+            else:
+                print("Erro: Digite Uma Opção Valida!")
+                pass
+            
+    elif func == "4":       #Div
+        print("=-=-=-=-[Divisão]-=-=-=-=")
+        num1 = pedir_numero("Selecione o Primeiro Numero: ")
+        num2 = pedir_numero("Selecione o Segundo Numero: ")
+        print("")
+        resulsoma = num1 / num2
+        print("Resultado: " + str(resulsoma))
+        while True:
+            print("Deseja Dividir mais numeros sobre o resultado? [Y/N]")
+            desejo = input("").strip().upper()
+            if desejo == "Y":
+                proxnum = pedir_numero("Digite o proximo numero: ")
+                resulsoma = resulsoma / proxnum
+                print("Resultado: " + str(resulsoma))
+                
+            elif desejo == "N":
+                break
+            
+            else:
+                print("Erro: Digite Uma Opção Valida!")
+                pass
+    	      
+    
+    elif func == "5":       #Encerramento =- =- =- =- =-
+        break
+    
+    else:       #Caso Seleciona uma função invalida loop
+        print("Erro: Selecione uma função valida")

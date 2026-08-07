@@ -1,0 +1,40 @@
+#Problema "retangulo" : Fazer um programa para ler as medidas da base e altura de um retângulo. Em seguida, mostrar o valor da área, perímetro e diagonal deste retângulo, com quatro casas decimais, conforme exemplos
+import math
+
+def retangulo():
+    while True:
+        try:
+            base = float(input("Digite A Base do Retangulo: "))
+            if base > 0:
+                break
+            print("Erro! Digite Um Numero Maior Que 0")
+        except ValueError:
+            print("Erro! Digite Um Numero Valido!")
+    while True:
+        try:
+            alt = float(input("Digite A Altura do Retangulo: "))
+            if alt > 0:
+                break
+            print("Erro! Digite Um Numero Maior Que 0")
+        except ValueError:
+            print("Erro! Digite Um Numero Valido!")
+    area = base * alt
+    calc = (base ** 2) + (alt ** 2)
+    raiz = math.sqrt(calc)  
+    peri =  (base * 2) + (alt * 2)
+    
+    print(f"\nArea: {area}\nPerimetro: {peri}\nDiagonal: {raiz}\n")
+
+while True:
+    retangulo()
+    while True:
+        plagain = input("Continuar a Calcular? [Y/N]: ").upper()
+        if plagain == "Y":
+            break
+        elif plagain == "N":
+            break
+        else:
+            print("Erro! Digite Somente Opções Validas [Y/N]")
+    if plagain == "N":
+        print("Até Logo...")
+        break

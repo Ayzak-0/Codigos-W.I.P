@@ -1,0 +1,38 @@
+## Problema(Terreno): Fazer o Programa Ler A Largura e Comprimento do terreno, Calcular O Metro Quadrado e o Valor do metro quadrado e exibir para o Usuario.
+#===========================================#
+def calc_te():
+    val_m2 = 200.00
+    while True:
+        try:
+            te_larg = float(input("Insira a Largura do Terreno: "))
+            if te_larg > 0:
+                break
+            print("Erro! Digite Um Valor Maior Que Zero")
+        except ValueError:
+            print("Erro! Digite Apenas Numeros!")
+    while True:
+        try:
+            te_comp = float(input("Insira o Comprimento do Terreno: "))
+            if te_comp > 0:
+                break
+            print("Erro! Digite Um Valor Maior Que Zero")
+        except ValueError:
+            print("Erro! Digite Apenas Numeros!")
+    m2 = te_larg * te_comp
+    val_te = m2 * val_m2
+    print(f"Metro²={m2}\nO Terreno Vale: {val_te}R$.")
+    return
+
+while True:
+    calc_te()
+    while True:
+        plagain = input("Deseja Calcular Novamente? [Y/N]: ").upper()
+        if plagain == "N":
+            print("Adios...")
+            break
+        elif plagain == "Y":
+            break
+        else:
+            print("Digite Uma Opção Valida [Y/N]")
+    if plagain == "N":
+        break

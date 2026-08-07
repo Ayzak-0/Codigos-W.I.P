@@ -1,0 +1,109 @@
+import random
+
+def jogar():
+    palavras = ["Bagatim", "Meira", "Teixeira", "Bataclim", "Schab", "Belonga", "Ratao", "Marinheiro", "Haaland"]
+    palavra_secreta = random.choice(palavras).strip().upper()
+    letras_descobertas = ["_" for letra in palavra_secreta]
+    
+    chances = 6
+    letras_erradas = []
+    
+    print("""
+    #===========================================#
+    |                                           |
+    -   Bem-Vindo Ao Jogo da Forca (De Mara)    -
+    |                                           |
+    #===========================================#
+    """)
+    
+    while chances > 0 and "_" in letras_descobertas:
+        print("\nPalavra:", " ".join(letras_descobertas))
+        print(f"Chances: {chances}")
+        print(f"Letras Erradas: {', '.join(letras_erradas)}")
+        palpite = input("Digite Uma Letra: ").upper().strip()
+        if len(palpite) != 1 or not palpite.isalpha():
+            print("Por favor, digite apenas uma letra valida!")
+            continue
+        if palpite in letras_descobertas or palpite in letras_erradas:
+            print("Você ja tentou essa letra.")
+            continue
+        if palpite in palavra_secreta:
+            for index, letra in enumerate(palavra_secreta):
+                if palpite == letra:
+                    letras_descobertas[index] = palpite
+        else:
+            chances -= 1
+            letras_erradas.append(palpite)
+        
+        def desenho_forca(erros):
+            
+                estagios = ["""
+                  #=======#
+                  |      \\#
+                  O       #
+                 /|\\      #
+                  /\\      #
+                         /#\\ 
+                  =============""", """
+                
+                  #=======#
+                  |      \\#
+                  O       #
+                 /|\\      #
+                  /       #
+                         /#\\ 
+                  =============""", """
+                
+                  #=======#
+                  |      \\#
+                  O       #
+                 /|\\      #
+                          #
+                         /#\\ 
+                  =============""", """
+                  #=======#
+                  |      \\#
+                  O       #
+                 /|       #
+                          #
+                         /#\\ 
+                  =============""", """
+                  #=======#
+                  |      \\#
+                  O       #
+                  |       #
+                          #
+                         /#\\ 
+                  =============""", """
+                  #=======#
+                  |      \\#
+                  O       #
+                          #
+                          #
+                         /#\\ 
+                  =============""", """
+                  #=======#
+                  |      \\#
+                          #
+                          #
+                          #
+                         /#\\ 
+                  ============="""]
+                print(estagios[erros])
+        desenho_forca(chances)
+    
+        
+        
+    if "_" not in letras_descobertas:
+        print("\nVocê Acertou Tudo, Parabens! a Palvra era:",palavra_secreta)
+    else:
+        print("\nMuito Malhado mesmo...  A Palavra era:", palavra_secreta)
+while True:
+    jogar()
+    while True:
+        jogar_novamente = input("\nDeseja Jogar Novamente? [Y/N]: ").strip().upper()
+        if jogar_novamente in ["Y", "N"]:
+            break
+    if jogar_novamente == "N":
+        print("Obrigado Por Jogar!")
+        break
