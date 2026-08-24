@@ -1,0 +1,23 @@
+def wtii():
+    while True:    
+        try:
+            hora = float(input("What Time Is it?\n"))
+            if hora > 0:
+                break
+        except ValueError:
+            print("Try Again!")
+    while True:
+        if hora <= 12:
+            print("GM")
+            break
+        elif hora >= 18:
+            print("GN")
+            break
+        elif hora >= 12 <= 18:
+            print("GA")
+            break
+        else:
+            print("Wrong Time Format")
+            break    
+while True:
+    wtii()
