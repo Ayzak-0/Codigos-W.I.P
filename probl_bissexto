@@ -1,0 +1,36 @@
+import random
+
+num = [0, 1, 2, 3]
+
+num1 = random.choice(num)
+num2 = random.choice(num)
+num3 = random.choice(num)
+num4 = random.choice(num)
+
+ano = (num1 * 1000 ) + (num2 * 100) + (num3 * 10) + num4
+
+while True:
+  if num4 or num3 > 0:
+    anoc = ano / 4
+    anob = str(anoc)
+    tf = (anob.isalnum())
+    while True:
+      if tf is True:
+        print(f"O Ano: {ano} é Bissexto")
+        break
+      else:
+        print(f"O Ano: {ano} não é Bissexto")
+        break
+    break
+  else:
+    anoc = ano / 400
+    anob = str(anoc)
+    tf = (anob.isalnum())
+    while True:
+      if tf is True:
+        print(f"O Ano: {ano} é Bissexto")
+        break
+      else:
+        print(f"O Ano: {ano} não é Bissexto")
+        break
+    break
