@@ -1,0 +1,9 @@
+#num = int(input('Digite um numero'))
+#for i in range(11):
+#  print('{}x{}={}'.format((num),(i),(num*i)))
+
+nome = input("\nDigite Seu nome: ")
+anonasc = int(input("Digite seu ano de nascimento: "))
+idade = 2026 - anonasc
+
+print("Olá {}, Você tem {} Anos ".format((nome),(idade)))
