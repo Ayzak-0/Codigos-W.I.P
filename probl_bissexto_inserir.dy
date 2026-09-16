@@ -1,0 +1,36 @@
+import math
+import os
+
+def play():
+  os.system('clear')
+  print("=" * 45)
+  titulo = "[Ano Bissexto?]"
+  print(f"{titulo:#^45}")
+  print("=" * 45)
+  while True:
+    try:
+      ano = int(input("\nInsira o Ano: "))
+      if ano > 0:
+        break
+      else:
+        print("Insira Um Ano Valido!")
+    except ValueError:
+      print("Insira Apenas Numeros Validos!")
+  while True:
+    if (ano % 4) == 0 or (ano % 400) == 0:
+      print(f"O Ano: {ano} è Bissexto")
+      break  
+    else:
+      print(f"O Ano: {ano} Não é Bissexto")
+      break
+while True:
+  play()
+  while True:
+    playagain = input("Continuar? [Y/N]\n").upper().strip()
+    if playagain in ["Y", "N"]:
+      break
+    else:
+      print("Digite Uma Opção Valida [Y/N]")
+  if playagain == "N":
+    print("\nAté Logo...")
+    break
