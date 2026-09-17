@@ -1,0 +1,114 @@
+import sys
+import termios
+import tty
+import os
+import random
+os.system('clear')
+# # # # # # # # # # # # # # # # # # # # # # # # #
+def getch():
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    try:
+        tty.setraw(sys.stdin.fileno())
+        ch = sys.stdin.read(1)
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    return ch
+# # # # # # # # # # # # # # # # # # # # # # # # #
+def sel0002():
+  print("[01] SEL0002-MENU ENVIO/COLETA")
+  print(31 * "-")
+  print("\nOpções:\n")
+  print('''1-Nova Requisicão
+2-Coletar Req. Existente
+3-Nova Req.
+4-Nova Req.
+5-Coletar Req. Picking
+6-Abastecimento Picking
+7-Abastecimento Especial
+8-Consultar Minhas Requisicões
+0-Voltar
+  ''')
+  print("Digite a opcao: [] ")
+  print(31 * "-")
+  while True:
+    char = getch()
+
+    if char == chr(27): #Backspace ou "0"
+      
+      break
+    elif char == "0":
+      
+      break
+    elif char == "1":
+      
+      break
+    elif char == "2":
+      
+      break
+    elif char == "3":
+      
+      break
+    elif char == "4":
+      
+      break
+    elif char == "5":
+      
+      break
+    elif char == "6":
+      
+      break
+    elif char == "7":            
+      os.system('clear')
+      print("[01]SEL0373-ABASTEC.ESPECIAL")
+
+      print('''Num. Req:[       ]Leit:[   ]
+Loc/Usu:[                  ]
+Setores:[                  ]
+	[		   ]
+	[		   ]
+Obs:[			   ]
+    [	 		   ]
+p-Proxima req. da fila
+1-Determinar setores
+2-Sugestao de coleta
+4-Devolver/Encerrar palete
+6-Conferencia Requisicao
+7-Abastecimento Picking
+8-Etiqueta Volume
+0-Voltar       Opcao:[]
+
+
+''')
+      while True:
+        char = getch()
+      if char == "0":
+        break
+      
+      
+      
+      
+      
+      
+      
+      
+      break
+    elif char == "8":
+      
+      break
+    
+
+
+
+
+
+sel0002()
+
+
+
+
+
+
+
+
+  
