@@ -1,0 +1,21 @@
+import random
+zeanov = [0, 1, 2, 3, 4, 5, 6, 7, 9]
+num1 = str(random.choice(zeanov))
+print(num1)
+num2 = str(random.choice(zeanov))
+print(num2)
+num3 = str(random.choice(zeanov))
+print(num3)
+num4 = str(random.choice(zeanov))
+print(num4)
+num5 = str(random.choice(zeanov))
+print(num5)
+num6 = str(random.choice(zeanov))
+print(num6)
+req = (num1 + num2 + num3 + num4 + num5 + num6)
+#print(f"{int(req):06d}")
+print(f'''teste
+
+teste[{int(req):06d}]
+
+''')
