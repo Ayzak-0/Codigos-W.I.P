@@ -3,7 +3,19 @@ import termios
 import tty
 import os
 import random
-
+# # # # # # # # # # # # # # # # # # # # # # # # #
+def randomreq():
+  zeanov = [0, 1, 2, 3, 4, 5, 6, 7, 9]
+  num1 = str(random.choice(zeanov))
+  num2 = str(random.choice(zeanov))
+  num3 = str(random.choice(zeanov))
+  num4 = str(random.choice(zeanov))
+  num5 = str(random.choice(zeanov))
+  num6 = str(random.choice(zeanov))
+  req = int((num1 + num2 + num3 + num4 + num5 + num6))
+  return req
+ #print(f"{randomreq():06d}")
+  
 # # # # # # # # # # # # # # # # # # # # # # # # #
 def getch():
     fd = sys.stdin.fileno()
@@ -60,15 +72,16 @@ def sel0002():
       break
 # # # # # # # # # # # # # # # # # # # # # # #
 def sel0373():
-  os.system('clear')
-  print("[01]SEL0373-ABASTEC.ESPECIAL\n")
-  print('''Num. Req:[       ]Leit:[   ]
-  Loc/Usu:[                ]
-  Setores:[                ]
-  	[                  ]
-  	[	           ]
-  Obs:[	 	           ]
-      [	 	           ]
+  while True:
+    os.system('clear')
+    print("[01]SEL0373-ABASTEC.ESPECIAL\n")
+    print(f'''Num. Req:[       ]Leit:[   ]
+Loc/Usu:[         ][       ]
+Setores:[                  ]
+        [                  ]
+        [                  ]
+Obs:[  	                   ]
+    [	 	           ]
 p-Proxima req. da fila
 1-Determinar setores
 2-Sugestao de coleta
@@ -77,16 +90,42 @@ p-Proxima req. da fila
 7-Abastecimento Picking
 8-Etiqueta Volume
 0-Voltar       Opcao:[]
-  
-  
-  ''')
-  while True:
     
-    char = getch()
-    if char == chr(27):
-      break
-    elif char == "0":
-      break
+    
+    ''')
+    while True:
+      char = getch()
+      if char == chr(27):
+        break
+      elif char == "0":
+        break  
+      elif char == "p":                 # P P P P P P P P
+        os.system('clear')
+        print("[01]SEL0373-ABASTEC.ESPECIAL\n")
+        print(f'''Num. Req:[{randomreq():06d} ]Leit:[   ]
+Loc/Usu:[         ][       ]
+Setores:[                  ]
+        [                  ]
+        [                  ]
+Obs:[	 	           ]
+    [	 	           ]
+p-Proxima req. da fila
+1-Determinar setores
+2-Sugestao de coleta
+4-Devolver/Encerrar palete
+6-Conferencia Requisicao
+7-Abastecimento Picking
+8-Etiqueta Volume
+0-Voltar       Opcao:[]
+    
+    
+    ''')
+        char = getch()
+        if char == chr(27):
+          break
+        elif char == "0":
+          break
+    break
 # # # # # # # # # # # # # # # # # # # # # # # #
 
 
@@ -106,7 +145,7 @@ while True:
     print("")
     print("")
     print("")
-    print(f"{titulo: ^45}")
+    print(f"{titulo: ^30}")
     print("")
     print("")
     print("")
