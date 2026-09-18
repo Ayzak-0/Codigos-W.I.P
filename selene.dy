@@ -22,14 +22,14 @@ def sel0002():
     print(31 * "-")
     print("\nOpções:\n")
     print('''1-Nova Requisicão
-  2-Coletar Req. Existente
-  3-Nova Req.
-  4-Nova Req.
-  5-Coletar Req. Picking
-  6-Abastecimento Picking
-  7-Abastecimento Especial
-  8-Consultar Minhas Requisicões
-  0-Voltar
+2-Coletar Req. Existente
+3-Nova Req.
+4-Nova Req.
+5-Coletar Req. Picking
+6-Abastecimento Picking
+7-Abastecimento Especial
+8-Consultar Minhas Requisicões
+0-Voltar
     ''')
     print("Digite a opcao: [] ")
     print(31 * "-")
@@ -61,22 +61,22 @@ def sel0002():
 # # # # # # # # # # # # # # # # # # # # # # #
 def sel0373():
   os.system('clear')
-  print("[01]SEL0373-ABASTEC.ESPECIAL")
+  print("[01]SEL0373-ABASTEC.ESPECIAL\n")
   print('''Num. Req:[       ]Leit:[   ]
-  Loc/Usu:[                  ]
-  Setores:[                  ]
-  	[		   ]
-  	[		   ]
-  Obs:[			   ]
-      [	 		   ]
-  p-Proxima req. da fila
-  1-Determinar setores
-  2-Sugestao de coleta
-  4-Devolver/Encerrar palete
-  6-Conferencia Requisicao
-  7-Abastecimento Picking
-  8-Etiqueta Volume
-  0-Voltar       Opcao:[]
+  Loc/Usu:[                ]
+  Setores:[                ]
+  	[                  ]
+  	[	           ]
+  Obs:[	 	           ]
+      [	 	           ]
+p-Proxima req. da fila
+1-Determinar setores
+2-Sugestao de coleta
+4-Devolver/Encerrar palete
+6-Conferencia Requisicao
+7-Abastecimento Picking
+8-Etiqueta Volume
+0-Voltar       Opcao:[]
   
   
   ''')
@@ -87,6 +87,17 @@ def sel0373():
       break
     elif char == "0":
       break
+# # # # # # # # # # # # # # # # # # # # # # # #
+
+
+
+
+
+
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # 
 while True:
   sel0002()
   while True:
