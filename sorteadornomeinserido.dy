@@ -1,0 +1,8 @@
+import random
+lista_nomes = []
+for i in range (10):
+  nomeinserido = input("Insira um nome a ser Sorteado: ")
+  lista_nomes.append(nomeinserido)
+sorteado = random.choice(lista_nomes)
+
+print(f"Nomes Na Lista {lista_nomes}, e o nome sorteado é: {sorteado}")
