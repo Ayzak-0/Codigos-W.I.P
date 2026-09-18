@@ -3,6 +3,7 @@ import termios
 import tty
 import os
 import random
+import time
 # # # # # # # # # # # # # # # # # # # # # # # # #
 def randomreq():
   zeanov = [0, 1, 2, 3, 4, 5, 6, 7, 9]
@@ -19,12 +20,12 @@ def randomreq():
 # # # # # # # # # # # # # # # # # # # # # # # # #
 def randomloc():
   locais = ["CD", "EXP"]
-  local = str(random.choice(locais))
+  local = random.choice(locais)
   return local
 # # # # # # # # # # # # # # # # # # # # # # # # #
 def randomusu():
   usuarios = ["cd.ezeq", "cd.levi", "cd.afog", "cd.serg", "cd.gust"]
-  usuario = str(random.choice(usuarios))
+  usuario = random.choice(usuarios)
   return usuario
 # # # # # # # # # # # # # # # # # # # # # # # # #
 def getch():
@@ -45,8 +46,8 @@ def sel0002():
     print("\nOpções:\n")
     print('''1-Nova Requisicão
 2-Coletar Req. Existente
-3-Nova Req.
-4-Nova Req.
+3-Nova Req. Sem Reservar
+4-Nova Req.P/Compl.Pedido 
 5-Coletar Req. Picking
 6-Abastecimento Picking
 7-Abastecimento Especial
@@ -116,17 +117,16 @@ p-Proxima req. da fila
     elif char == chr(13) and req_mostrada != "       " and local == "         ":
       local = randomloc()
       usuario = randomusu()
+    elif char == chr(13) and req_mostrada == "       ":
+      lista_temporaria = []
+      while True:
+        char = getch()
+        if char == chr(13) or char == chr(27):
+          break
+        elif char in ["1","2","3","4","5","6","7","8","9","0"]:
+          lista_temporaria.append(char)
+          req = ("".join(lista_temporaria))      
 # # # # # # # # # # # # # # # # # # # # # # # #
-
-
-
-
-
-
-
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # 
 while True:
   sel0002()
   while True:
@@ -146,5 +146,3 @@ while True:
       print("Selecione Uma Opção Valida! [Y/N]")
   if char == "y":
     break
-
-    
