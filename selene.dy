@@ -13,9 +13,19 @@ def randomreq():
   num5 = str(random.choice(zeanov))
   num6 = str(random.choice(zeanov))
   req = int((num1 + num2 + num3 + num4 + num5 + num6))
+  req = str(req)
   return req
  #print(f"{randomreq():06d}")
-  
+# # # # # # # # # # # # # # # # # # # # # # # # #
+def randomloc():
+  locais = ["CD", "EXP"]
+  local = str(random.choice(locais))
+  return local
+# # # # # # # # # # # # # # # # # # # # # # # # #
+def randomusu():
+  usuarios = ["cd.ezeq", "cd.levi", "cd.afog", "cd.serg", "cd.gust"]
+  usuario = str(random.choice(usuarios))
+  return usuario
 # # # # # # # # # # # # # # # # # # # # # # # # #
 def getch():
     fd = sys.stdin.fileno()
@@ -72,11 +82,14 @@ def sel0002():
       break
 # # # # # # # # # # # # # # # # # # # # # # #
 def sel0373():
+  req_mostrada = "       "
+  local = "         "
+  usuario = "       "
   while True:
     os.system('clear')
     print("[01]SEL0373-ABASTEC.ESPECIAL\n")
-    print(f'''Num. Req:[       ]Leit:[   ]
-Loc/Usu:[         ][       ]
+    print(f'''Num. Req:[{req_mostrada.ljust(7)}]Leit:[   ]
+Loc/Usu:[{local.ljust(9)}][{usuario.ljust(7)}]
 Setores:[                  ]
         [                  ]
         [                  ]
@@ -93,39 +106,16 @@ p-Proxima req. da fila
     
     
     ''')
-    while True:
-      char = getch()
-      if char == chr(27):
-        break
-      elif char == "0":
-        break  
-      elif char == "p":                 # P P P P P P P P
-        os.system('clear')
-        print("[01]SEL0373-ABASTEC.ESPECIAL\n")
-        print(f'''Num. Req:[{randomreq():06d} ]Leit:[   ]
-Loc/Usu:[         ][       ]
-Setores:[                  ]
-        [                  ]
-        [                  ]
-Obs:[	 	           ]
-    [	 	           ]
-p-Proxima req. da fila
-1-Determinar setores
-2-Sugestao de coleta
-4-Devolver/Encerrar palete
-6-Conferencia Requisicao
-7-Abastecimento Picking
-8-Etiqueta Volume
-0-Voltar       Opcao:[]
-    
-    
-    ''')
-        char = getch()
-        if char == chr(27):
-          break
-        elif char == "0":
-          break
-    break
+  
+    char = getch()
+    if char == chr(27) or char == "0":
+      break
+    elif char == "p" and local == "         ":               
+      req_mostrada = randomreq()
+      
+    elif char == chr(13) and req_mostrada != "       " and local == "         ":
+      local = randomloc()
+      usuario = randomusu()
 # # # # # # # # # # # # # # # # # # # # # # # #
 
 
@@ -145,7 +135,7 @@ while True:
     print("")
     print("")
     print("")
-    print(f"{titulo: ^30}")
+    print(f"{titulo: ^31}")
     print("")
     print("")
     print("")
@@ -156,3 +146,5 @@ while True:
       print("Selecione Uma Opção Valida! [Y/N]")
   if char == "y":
     break
+
+    
