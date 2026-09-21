@@ -3,7 +3,6 @@ import termios
 import tty
 import os
 import random
-import time
 # # # # # # # # # # # # # # # # # # # # # # # # #
 def randomreq():
   zeanov = [0, 1, 2, 3, 4, 5, 6, 7, 9]
@@ -16,7 +15,6 @@ def randomreq():
   req = int((num1 + num2 + num3 + num4 + num5 + num6))
   req = str(req)
   return req
- #print(f"{randomreq():06d}")
 # # # # # # # # # # # # # # # # # # # # # # # # #
 def randomloc():
   locais = ["CD", "EXP"]
@@ -78,6 +76,7 @@ def sel0002():
         sel0373()
         break
       elif char == "8":
+        sel0008()
         break 
     if char == "0" or char == chr(27):
       break
@@ -108,25 +107,84 @@ p-Proxima req. da fila
     
     ''')
   
-    char = getch()
+    char = getch() # <--- Char Getch para "pedir" Tecla
+    
+    # Esc ou "0" Para Sair
     if char == chr(27) or char == "0":
       break
+    
+    # Puxar "Proxima Req"
     elif char == "p" and local == "         ":               
       req_mostrada = randomreq()
-      
+    
+    # "Pegar" A Req Para o Usuario
     elif char == chr(13) and req_mostrada != "       " and local == "         ":
       local = randomloc()
       usuario = randomusu()
+      historico_req.append(req_mostrada)
+      historico_loc.append(local)
+      historico_usu.append(usuario)
+      
+    #Enter Para Digitar A Req # # # # # # # # # # # # #
     elif char == chr(13) and req_mostrada == "       ":
       lista_temporaria = []
       while True:
         char = getch()
+        
+        #Enter ou Esc Para Sair
         if char == chr(13) or char == chr(27):
           break
+        
+        #Registrar a Req. Digitada
         elif char in ["1","2","3","4","5","6","7","8","9","0"]:
           lista_temporaria.append(char)
-          req = ("".join(lista_temporaria))      
+          req = ("".join(lista_temporaria)) 
+          req_mostrada = req
+
 # # # # # # # # # # # # # # # # # # # # # # # #
+def sel0008():
+  
+  while True:
+    os.system('clear')
+    titulo = "SEL0008-CONSULTA REQ."
+    print(f"[01] {titulo: ^26}")
+    print(31 * "=")
+# cria 2 variaveis em cima do historico e um loop que mostra essas variaveis como numeração dos itens no historico.    
+    for indice, item in enumerate(historico_req, start=1):
+      print(f"[{str(indice).ljust(3)}] [{item.ljust(6)}] [{historico_loc[indice - 1].ljust(3)}] [{historico_usu[indice - 1]}]")
+    
+      
+    char = getch()
+    # Tecla 0 ou Esc Para Sair
+    if char == "0" or char == chr(27):
+      break
+    # Enter Para Selecionar Req Da Lista
+    if char == chr(13):
+      lista_temporaria = []
+      while True:
+        char = getch()
+        if char in ["1","2","3","4","5","6","7","8","9","0"]:
+          lista_temporaria.append(char)
+        elif char == chr(13):
+          sel = "".join(lista_temporaria)
+          sel = int(sel)
+          print(historico_req[sel - 1])
+          break
+          
+          
+          
+
+
+
+
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # #
+#''' Loop Principal e Menu de Saida '''#
+historico_req = []
+historico_loc = []
+historico_usu = []
 while True:
   sel0002()
   while True:
@@ -146,3 +204,6 @@ while True:
       print("Selecione Uma Opção Valida! [Y/N]")
   if char == "y":
     break
+# # # # # # # # # # # # # # # # # # # # # # # # #
+
+    
