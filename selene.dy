@@ -5,7 +5,7 @@ import os
 import random
 # # # # # # # # # # # # # # # # # # # # # # # # #
 def randomreq():
-  zeanov = [0, 1, 2, 3, 4, 5, 6, 7, 9]
+  zeanov = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
   num1 = str(random.choice(zeanov))
   num2 = str(random.choice(zeanov))
   num3 = str(random.choice(zeanov))
@@ -15,6 +15,10 @@ def randomreq():
   req = int((num1 + num2 + num3 + num4 + num5 + num6))
   req = str(req)
   return req
+# # # # # # # # # # # # # # # # # # # # # # # # #
+def randomlei():
+  leitura = str(random.randint(1, 999))
+  return leitura
 # # # # # # # # # # # # # # # # # # # # # # # # #
 def randomloc():
   locais = ["CD", "EXP"]
@@ -85,11 +89,12 @@ def sel0373():
   req_mostrada = "       "
   local = "         "
   usuario = "       "
+  leitura = "   "
   while True:
     os.system('clear')
     print("[01]SEL0373-ABASTEC.ESPECIAL\n")
-    print(f'''Num. Req:[{req_mostrada.ljust(7)}]Leit:[   ]
-Loc/Usu:[{local.ljust(9)}][{usuario.ljust(7)}]
+    print(f'''Num. Req:[{req_mostrada.rjust(7)}]Leit:[{leitura.rjust(3)}]
+Loc/Usu:[{local.ljust(9)}][{usuario.rjust(7)}]
 Setores:[                  ]
         [                  ]
         [                  ]
@@ -121,6 +126,7 @@ p-Proxima req. da fila
     elif char == chr(13) and req_mostrada != "       " and local == "         ":
       local = randomloc()
       usuario = randomusu()
+      leitura = randomlei()
       historico_req.append(req_mostrada)
       historico_loc.append(local)
       historico_usu.append(usuario)
@@ -140,48 +146,47 @@ p-Proxima req. da fila
           lista_temporaria.append(char)
           req = ("".join(lista_temporaria)) 
           req_mostrada = req
-
+    elif char == "2" and req_mostrada != "       " and usuario != "       ":
+      sel0374(req_mostrada, leitura)
+            
+# # # # # # # # # # # # # # # # # # # # # # # #
+def sel0374(req_mostrada, leitura):
+  while True:
+    os.system('clear')
+    titulo = "SEL0374-COLETA ESPECIAL"
+    print(f"[01] {titulo: ^23}\n")
+    print(f'''Num. Req:[{req_mostrada.rjust(7)}]Leit:[{leitura.rjust(3)}]
+----NECESSIDADE X END.---- ]
+ Qtd.Paletes[  00]  Disp  ,]
+ Endereco Par/Item Var Bx ,]
+[00-000-0[  00[  0[ 00[ ] ,]
+[00-000-0[  00[  0[ 00[S] ,]
+[00-000-0[  00[  0[ 00[X] ,]
+''')
+    char = getch()
+    if char == chr(27) or char == "0":
+      break
 # # # # # # # # # # # # # # # # # # # # # # # #
 def sel0008():
   
   while True:
     os.system('clear')
     titulo = "SEL0008-CONSULTA REQ."
-    print(f"[01] {titulo: ^26}")
+    print(f"[01]{titulo: ^27}")
     print(31 * "=")
 # cria 2 variaveis em cima do historico e um loop que mostra essas variaveis como numeração dos itens no historico.    
     for indice, item in enumerate(historico_req, start=1):
       print(f"[{str(indice).ljust(3)}] [{item.ljust(6)}] [{historico_loc[indice - 1].ljust(3)}] [{historico_usu[indice - 1]}]")
     
-      
     char = getch()
     # Tecla 0 ou Esc Para Sair
     if char == "0" or char == chr(27):
       break
-    # Enter Para Selecionar Req Da Lista
-    if char == chr(13):
-      lista_temporaria = []
-      while True:
-        char = getch()
-        if char in ["1","2","3","4","5","6","7","8","9","0"]:
-          lista_temporaria.append(char)
-        elif char == chr(13):
-          sel = "".join(lista_temporaria)
-          sel = int(sel)
-          print(historico_req[sel - 1])
-          break
-          
-          
-          
-
-
-
-
-
-
 
 # # # # # # # # # # # # # # # # # # # # # # # #
+
 #''' Loop Principal e Menu de Saida '''#
+
 historico_req = []
 historico_loc = []
 historico_usu = []
