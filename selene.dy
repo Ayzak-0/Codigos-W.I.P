@@ -40,7 +40,7 @@ def getch():
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
 # # # # # # # # # # # # # # # # # # # # # # # # #
-def sel0002():
+def sel0002(): #Tela Inicial/Menu/Envio/Coleta
   while True:
     os.system('clear')
     print("[01] SEL0002-MENU ENVIO/COLETA")
@@ -85,7 +85,7 @@ def sel0002():
     if char == "0" or char == chr(27):
       break
 # # # # # # # # # # # # # # # # # # # # # # #
-def sel0373():
+def sel0373(): #Tela de Abastecimento Especial
   req_mostrada = "       "
   local = "         "
   usuario = "       "
@@ -101,6 +101,7 @@ Setores:[                  ]
 Obs:[  	                   ]
     [	 	           ]
 p-Proxima req. da fila
+u-Ultima req. usada
 1-Determinar setores
 2-Sugestao de coleta
 4-Devolver/Encerrar palete
@@ -109,7 +110,6 @@ p-Proxima req. da fila
 8-Etiqueta Volume
 0-Voltar       Opcao:[]
     
-    
     ''')
   
     char = getch() # <--- Char Getch para "pedir" Tecla
@@ -117,7 +117,11 @@ p-Proxima req. da fila
     # Esc ou "0" Para Sair
     if char == chr(27) or char == "0":
       break
-    
+
+    #Tela Def. Setores
+    elif char == "1":
+      sel0001()
+      
     # Puxar "Proxima Req"
     elif char == "p" and local == "         ":               
       req_mostrada = randomreq()
@@ -130,7 +134,17 @@ p-Proxima req. da fila
       historico_req.append(req_mostrada)
       historico_loc.append(local)
       historico_usu.append(usuario)
-      
+      historico_lei.append(leitura)
+   
+    # Ultima Req Mostrada
+    elif char == "u" and historico_req != [] and req_mostrada == "       ":
+      req_mostrada = historico_req[-1]
+      local = historico_loc[-1]
+      usuario = historico_usu[-1]
+      leitura = historico_lei[-1]
+  
+    
+    
     #Enter Para Digitar A Req # # # # # # # # # # # # #
     elif char == chr(13) and req_mostrada == "       ":
       lista_temporaria = []
@@ -150,7 +164,7 @@ p-Proxima req. da fila
       sel0374(req_mostrada, leitura)
             
 # # # # # # # # # # # # # # # # # # # # # # # #
-def sel0374(req_mostrada, leitura):
+def sel0374(req_mostrada, leitura): # Tela De Coleta No Especial
   while True:
     os.system('clear')
     titulo = "SEL0374-COLETA ESPECIAL"
@@ -167,7 +181,7 @@ def sel0374(req_mostrada, leitura):
     if char == chr(27) or char == "0":
       break
 # # # # # # # # # # # # # # # # # # # # # # # #
-def sel0008():
+def sel0008(): # Tela de Historico/Consulta Req
   
   while True:
     os.system('clear')
@@ -184,12 +198,53 @@ def sel0008():
       break
 
 # # # # # # # # # # # # # # # # # # # # # # # #
+def sel0001(): #Tela De Definir Setores
+  while True:
+    os.system('clear')
+    titulo = "SEL0001-DEF. SETORES."
+    print(f"[01]{titulo: ^27}")
+    print(31 * "=")
+    print(f'''[{setores[0][setor]}]
+    ''')
+
+
+
+
+
+    
+
+    char = getch()
+    
+    if char == "0" or char == chr(27):
+      break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# # # # # # # # # # # # # # # # # # # # # # # #
+
 
 #''' Loop Principal e Menu de Saida '''#
 
 historico_req = []
 historico_loc = []
 historico_usu = []
+historico_lei = []
+setores = [{"setor": "1", "ativo": True}]
+
+
 while True:
   sel0002()
   while True:
