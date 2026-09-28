@@ -1,0 +1,108 @@
+import random, os, sys, termios, tty
+#==================================================#
+def getch():
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    try:
+        tty.setraw(sys.stdin.fileno())
+        ch = sys.stdin.read(1)
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    return ch
+#==================================================#
+def jogodavelha():
+  p1 = p2 = p3 = p4 = p5 = p6 = p7 = p8 = p9 = "[ ]"
+  ultimo = "[X]"
+  while True:
+    os.system('clear')
+    #
+    if p1 == p2 == p3 == "[O]" or p1 == p2 == p3 == "[X]":
+      p1 = p2 = p3 = "[\u0335X\u0335]\u0335" if p1 == "[X]" else "[\u0335O\u0335]\u0335"
+    #
+    elif p4 == p5 == p6 == "[O]" or p4 == p5 == p6 == "[X]":
+      p4 = p5 = p6 = "[\u0335X\u0335]\u0335" if p4 == "[X]" else "[\u0335O\u0335]\u0335"
+    #
+    elif p7 == p8 == p9 == "[O]" or p7 == p8 == p9 == "[X]":
+      p7 = p8 = p9 = "[\u0335X\u0335]\u0335" if p7 == "[X]" else "[\u0335O\u0335]\u0335"
+    #
+    elif p1 == p4 == p7 == "[O]" or p1 == p4 == p7 == "[X]":
+      p1 = p4 = p7 = "[\u0335X\u0335]\u0335" if p1 == "[X]" else "[\u0335O\u0335]\u0335"
+    #
+    elif p2 == p5 == p8 == "[O]" or p2 == p5 == p8 == "[X]":
+      p2 = p5 = p8 = "[\u0335X\u0335]\u0335" if p2 == "[X]" else "[\u0335O\u0335]\u0335"
+    #
+    elif p3 == p6 == p9 == "[O]" or p3 == p6 == p9 == "[X]":
+      p3 = p6 = p9 = "[\u0335X\u0335]\u0335" if p3 == "[X]" else "[\u0335O\u0335]\u0335"
+    #
+    elif p1 == p5 == p9 == "[O]" or p1 == p5 == p9 == "[X]":
+      p1 = p5 = p9 = "[\u0335X\u0335]\u0335" if p1 == "[X]" else "[\u0335O\u0335]\u0335"
+    #
+    elif p3 == p5 == p7 == "[O]" or p3 == p5 == p7 == "[X]":
+      p1 = p5 = p9 = "[\u0335X\u0335]\u0335" if p3 == "[X]" else "[\u0335O\u0335]\u0335"
+    
+    
+    
+      
+    
+    
+    
+    print(f'''{p7}{p8}{p9}
+{p4}{p5}{p6}
+{p1}{p2}{p3}''')
+    #
+    char = getch()
+    #
+    if char == chr(27) or char == "0":
+      break
+
+    # #
+    elif char == "1" and p1 == "[ ]":
+      p1 = "[X]" if ultimo == "[O]" else "[O]"
+      ultimo = "[X]" if ultimo == "[O]" else "[O]"
+    
+    elif char == "2" and p2 == "[ ]":
+      p2 = "[X]" if ultimo == "[O]" else "[O]"
+      ultimo = "[X]" if ultimo == "[O]" else "[O]"
+    
+    elif char == "3" and p3 == "[ ]":
+      p3 = "[X]" if ultimo == "[O]" else "[O]"
+      ultimo = "[X]" if ultimo == "[O]" else "[O]"
+    
+    elif char == "4" and p4 == "[ ]":
+      p4 = "[X]" if ultimo == "[O]" else "[O]"
+      ultimo = "[X]" if ultimo == "[O]" else "[O]"
+    
+    elif char == "5" and p5 == "[ ]":
+      p5 = "[X]" if ultimo == "[O]" else "[O]"
+      ultimo = "[X]" if ultimo == "[O]" else "[O]"
+    
+    elif char == "6" and p6 == "[ ]":
+      p6 = "[X]" if ultimo == "[O]" else "[O]"
+      ultimo = "[X]" if ultimo == "[O]" else "[O]"
+    
+    elif char == "7" and p7 == "[ ]":
+      p7 = "[X]" if ultimo == "[O]" else "[O]"
+      ultimo = "[X]" if ultimo == "[O]" else "[O]"
+    
+    elif char == "8" and p8 == "[ ]":
+      p8 = "[X]" if ultimo == "[O]" else "[O]"
+      ultimo = "[X]" if ultimo == "[O]" else "[O]"
+    
+    elif char == "9" and p9 == "[ ]":
+      p9 = "[X]" if ultimo == "[O]" else "[O]"
+      ultimo = "[X]" if ultimo == "[O]" else "[O]"
+    # #
+      
+# Jogar
+while True:
+  jogodavelha()
+  break
+
+
+
+
+
+
+
+
+  
