@@ -11,29 +11,13 @@ def getch():
     return ch
 #==================================================#
 def jogodavelha():
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   p1 = p2 = p3 = p4 = p5 = p6 = p7 = p8 = p9 = "[ ]"
   ultimo = "[X]"
   vitorioso = "[ ]"
+  x_win = 0
+  o_win = 0
   while True:
     os.system('clear')
-    
     # Conferir Vitoria 1
     if p1 == p2 == p3 == "[O]" or p1 == p2 == p3 == "[X]":
       p1 = p2 = p3 = "[\u0335X\u0335]\u0335" if p1 == "[X]" else "[\u0335O\u0335]\u0335"
@@ -73,19 +57,19 @@ def jogodavelha():
     elif p3 == p5 == p7 == "[O]" or p3 == p5 == p7 == "[X]":
       p3 = p5 = p7 = "[\u0335X\u0335]\u0335" if p3 == "[X]" else "[\u0335O\u0335]\u0335"
       vitorioso = "[X]" if p3 == "[\u0335X\u0335]\u0335" else "[O]"
-      
+
+    print ("=" * 36)
+    print(f'''[X] = {x_win}{" " * 6}{p7}{p8}{p9} |
+[O] = {o_win}{" " * 6}{p4}{p5}{p6} |Vitoria: {vitorioso}
+{" " * 13}{p1}{p2}{p3} |''')
+    print ("=" * 36)
+    print ('''[0/Esc] - Sair
+[Enter] - Encerrar
     
-    
-    
-      
-    
-    
-    
-    print(f'''{p7}{p8}{p9}
-{p4}{p5}{p6}
-{p1}{p2}{p3}
-Vitoria: {vitorioso}''')
+    ''')
     #
+
+    
     char = getch()
     #
     if char == chr(27) or char == "0":
@@ -127,14 +111,37 @@ Vitoria: {vitorioso}''')
     elif char == "9" and p9 == "[ ]" and vitorioso == "[ ]":
       p9 = "[X]" if ultimo == "[O]" else "[O]"
       ultimo = "[X]" if ultimo == "[O]" else "[O]"
+
+    elif vitorioso != "[ ]" and char == chr(13):
+      os.system('clear')
+      print ("=" * 36)
+      print(f'''{" " * 13}{p7}{p8}{p9} |
+{" " * 13}{p4}{p5}{p6} |Vitoria: {vitorioso}
+{" " * 13}{p1}{p2}{p3} |''')
+      print ("=" * 36)
+      print("\n", " " * 5, "Jogar Novamente? [Y/N]")
+      char = getch()
+      
+      if char in ["y", "n"]:
+        if char == "y":
+          if vitorioso == "[X]":
+            x_win = x_win + 1
+          elif vitorioso == "[O]":
+            o_win = o_win + 1
+          
+          p1 = p2 = p3 = p4 = p5 = p6 = p7 = p8 = p9 = "[ ]"
+          ultimo = "[X]"
+          vitorioso = "[ ]"
+          
+        else:
+          break
     # #
       
 # Jogar
 while True:
   jogodavelha()
   break
-
-
+  
 
 
 
