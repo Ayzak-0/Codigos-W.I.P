@@ -204,22 +204,146 @@ def sel0001(): #Tela De Definir Setores
     titulo = "SEL0001-DEF. SETORES."
     print(f"[01]{titulo: ^27}")
     print(31 * "=")
-    print(f'''[{setores[0][setor]}]
+    print(f'''[{setores[0]["setor"]}] [{setores[1]["setor"]}] [{setores[2]["setor"]}] [{setores[3]["setor"]}] [{setores[4]["setor"]}] [{setores[5]["setor"]}] [{setores[6]["setor"]}] [{setores[7]["setor"]}]
+{"[X]" if setores[0]["ativo"] == True else "[ ]"} {"[X]" if setores[1]["ativo"] == True else "[ ]"} {"[X]" if setores[2]["ativo"] == True else "[ ]"} {"[X]" if setores[3]["ativo"] == True else "[ ]"} {"[X]" if setores[4]["ativo"] == True else "[ ]"} {"[X]" if setores[5]["ativo"] == True else "[ ]"} {"[X]" if setores[6]["ativo"] == True else "[ ]"} {"[X]" if setores[7]["ativo"] == True else "[ ]"}
     ''')
-
-
-
-
-
-    
-
+    # # # # # # # # # # # # # # # # # # # # # # #
     char = getch()
     
     if char == "0" or char == chr(27):
       break
+    
+    if char == "1":
+      if setores[0]["ativo"] == True:
+        setores[0]["ativo"] = False
+      else:
+        setores[0]["ativo"] = True
+
+    if char == "2":
+      if setores[1]["ativo"] == True:
+        setores[1]["ativo"] = False
+      else:
+        setores[1]["ativo"] = True
+
+    if char == "3":
+      if setores[2]["ativo"] == True:
+        setores[2]["ativo"] = False
+      else:
+        setores[2]["ativo"] = True
+
+    if char == "4":
+      if setores[3]["ativo"] == True:
+        setores[3]["ativo"] = False
+      else:
+        setores[3]["ativo"] = True
+
+    if char == "5":
+      if setores[4]["ativo"] == True:
+        setores[4]["ativo"] = False
+      else:
+        setores[4]["ativo"] = True
+
+    if char == "6":
+      if setores[5]["ativo"] == True:
+        setores[5]["ativo"] = False
+      else:
+        setores[5]["ativo"] = True
+
+    if char == "7":
+      if setores[6]["ativo"] == True:
+        setores[6]["ativo"] = False
+      else:
+        setores[6]["ativo"] = True
+
+    if char == "8":
+      if setores[7]["ativo"] == True:
+        setores[7]["ativo"] = False
+      else:
+        setores[7]["ativo"] = True
+
+    if char == "p":
+      while True:
+        os.system('clear')
+        titulo = "SEL0001-DEF. SETORES."
+        print(f"[01]{titulo: ^27}")
+        print(31 * "=")
+        print(f'''[{setores[0]["setor"]}] [{setores[1]["setor"]}] [{setores[2]["setor"]}] [{setores[3]["setor"]}] [{setores[4]["setor"]}] [{setores[5]["setor"]}] [{setores[6]["setor"]}] [{setores[7]["setor"]}]
+{"[X]" if setores[0]["ativo"] == True else "[ ]"} {"[X]" if setores[1]["ativo"] == True else "[ ]"} {"[X]" if setores[2]["ativo"] == True else "[ ]"} {"[X]" if setores[3]["ativo"] == True else "[ ]"} {"[X]" if setores[4]["ativo"] == True else "[ ]"} {"[X]" if setores[5]["ativo"] == True else "[ ]"} {"[X]" if setores[6]["ativo"] == True else "[ ]"} {"[X]" if setores[7]["ativo"] == True else "[ ]"}
+
+[{setores[8]["setor"]}] [{setores[9]["setor"]}] [{setores[10]["setor"]}] [{setores[11]["setor"]}] [{setores[12]["setor"]}] [{setores[13]["setor"]}] [{setores[14]["setor"]}]
+{"[X]" if setores[8]["ativo"] == True else "[ ]"} {"[X]" if setores[9]["ativo"] == True else "[ ]"}  {"[X]" if setores[10]["ativo"] == True else "[ ]"}  {"[X]" if setores[11]["ativo"] == True else "[ ]"}  {"[X]" if setores[12]["ativo"] == True else "[ ]"}  {"[X]" if setores[13]["ativo"] == True else "[ ]"}  {"[X]" if setores[14]["ativo"] == True else "[ ]"}
 
 
+    ''')
+        # # # # # # # # # # # # # # # # # # # # # # # # # #
+        char = getch()
+    
+        if char == "0" or char == chr(27):
+          break
+        if char == "1":
+          if setores[8]["ativo"] == True:
+            setores[8]["ativo"] = False
+          else:
+            setores[8]["ativo"] = True
 
+        if char == "2":
+          if setores[9]["ativo"] == True:
+            setores[9]["ativo"] = False
+          else:
+            setores[9]["ativo"] = True
+
+        if char == "3":
+          if setores[10]["ativo"] == True:
+            setores[10]["ativo"] = False
+          else:
+            setores[10]["ativo"] = True
+
+        if char == "4":
+          if setores[11]["ativo"] == True:
+            setores[11]["ativo"] = False
+          else:
+            setores[11]["ativo"] = True
+
+        if char == "5":
+          if setores[12]["ativo"] == True:
+            setores[12]["ativo"] = False
+          else:
+            setores[12]["ativo"] = True
+
+        if char == "6":
+          if setores[13]["ativo"] == True:
+            setores[13]["ativo"] = False
+          else:
+            setores[13]["ativo"] = True
+
+        if char == "7":
+          if setores[14]["ativo"] == True:
+            setores[14]["ativo"] = False
+          else:
+            setores[14]["ativo"] = True
+
+        if char == "p":
+          while True:
+            os.system('clear')
+            titulo = "SEL0001-DEF. SETORES."
+            print(f"[01]{titulo: ^27}")
+            print(31 * "=")
+            print(f'''[{setores[0]["setor"]}] [{setores[1]["setor"]}] [{setores[2]["setor"]}] [{setores[3]["setor"]}] [{setores[4]["setor"]}] [{setores[5]["setor"]}] [{setores[6]["setor"]}] [{setores[7]["setor"]}]
+{"[X]" if setores[0]["ativo"] == True else "[ ]"} {"[X]" if setores[1]["ativo"] == True else "[ ]"} {"[X]" if setores[2]["ativo"] == True else "[ ]"} {"[X]" if setores[3]["ativo"] == True else "[ ]"} {"[X]" if setores[4]["ativo"] == True else "[ ]"} {"[X]" if setores[5]["ativo"] == True else "[ ]"} {"[X]" if setores[6]["ativo"] == True else "[ ]"} {"[X]" if setores[7]["ativo"] == True else "[ ]"}
+
+[{setores[8]["setor"]}] [{setores[9]["setor"]}] [{setores[10]["setor"]}] [{setores[11]["setor"]}] [{setores[12]["setor"]}] [{setores[13]["setor"]}] [{setores[14]["setor"]}]
+{"[X]" if setores[8]["ativo"] == True else "[ ]"} {"[X]" if setores[9]["ativo"] == True else "[ ]"}  {"[X]" if setores[10]["ativo"] == True else "[ ]"}  {"[X]" if setores[11]["ativo"] == True else "[ ]"}  {"[X]" if setores[12]["ativo"] == True else "[ ]"}  {"[X]" if setores[13]["ativo"] == True else "[ ]"}  {"[X]" if setores[14]["ativo"] == True else "[ ]"}
+
+[{setores[15]["setor"]}] [{setores[16]["setor"]}] [{setores[17]["setor"]}] [{setores[18]["setor"]}] [{setores[19]["setor"]}] [{setores[20]["setor"]}]
+
+''')
+            char = getch()
+    
+            if char == "0" or char == chr(27):
+              break
+        
+
+    
 
 
 
@@ -242,8 +366,7 @@ historico_req = []
 historico_loc = []
 historico_usu = []
 historico_lei = []
-setores = [{"setor": "1", "ativo": True}]
-
+setores = [{"setor": "1", "ativo": True}, {"setor": "2", "ativo": True}, {"setor": "3", "ativo": True}, {"setor": "4", "ativo": True}, {"setor": "5", "ativo": True}, {"setor": "6", "ativo": True}, {"setor": "7", "ativo": True}, {"setor": "8", "ativo": True}, {"setor": "9", "ativo": True}, {"setor": "10", "ativo": True}, {"setor": "11", "ativo": True}, {"setor": "12", "ativo": True}, {"setor": "13", "ativo": True}, {"setor": "14", "ativo": True}, {"setor": "15", "ativo": True}, {"setor": "16", "ativo": True}, {"setor": "17", "ativo": True}, {"setor": "18", "ativo": True}, {"setor": "19", "ativo": True}, {"setor": "20", "ativo": True},  {"setor": "21", "ativo": True}, ]
 
 while True:
   sel0002()
