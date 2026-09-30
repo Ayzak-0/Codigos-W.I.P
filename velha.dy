@@ -16,6 +16,7 @@ def jogodavelha():
   vitorioso = "[ ]"
   x_win = 0
   o_win = 0
+  empate = 0
   while True:
     os.system('clear')
     # Conferir Vitoria 1
@@ -58,13 +59,45 @@ def jogodavelha():
       p3 = p5 = p7 = "[\u0335X\u0335]\u0335" if p3 == "[X]" else "[\u0335O\u0335]\u0335"
       vitorioso = "[X]" if p3 == "[\u0335X\u0335]\u0335" else "[O]"
 
+    #Conferir Empate
+    elif all(v != "[ ]" for v in (p1,p2,p3,p4,p5,p6,p7,p8,p9)):
+      vitorioso = "[-]"
+      
+    if vitorioso != "[ ]":
+      os.system('clear')
+      print ("=" * 36)
+      print(f'''[X] = {x_win}{" " * 6}{p7}{p8}{p9} |
+[O] = {o_win}{" " * 6}{p4}{p5}{p6} |Vitoria: {vitorioso}
+[-] = {empate}{" " * 6}{p1}{p2}{p3} |''')
+      print ("=" * 36)
+      print("\n", " " * 5, "Jogar Novamente? [Y/N]")
+      while True:
+        char = getch()
+        if char in ["y", "n"]:
+          if char == "y":
+            if vitorioso == "[X]":
+              x_win = x_win + 1
+            elif vitorioso == "[O]":
+              o_win = o_win + 1
+            elif vitorioso == "[-]":
+              empate = empate + 1
+              
+            p1 = p2 = p3 = p4 = p5 = p6 = p7 = p8 = p9 = "[ ]"
+            ultimo = "[X]"
+            vitorioso = "[ ]"
+            break
+          else:
+            break
+      if char == "n":
+        break
+    os.system('clear')
     print ("=" * 36)
     print(f'''[X] = {x_win}{" " * 6}{p7}{p8}{p9} |
 [O] = {o_win}{" " * 6}{p4}{p5}{p6} |Vitoria: {vitorioso}
-{" " * 13}{p1}{p2}{p3} |''')
+[-] = {empate}{" " * 6}{p1}{p2}{p3} |''')
     print ("=" * 36)
     print ('''[0/Esc] - Sair
-[Enter] - Encerrar
+[i] - Info (Como Jogar)
     
     ''')
     #
@@ -112,29 +145,8 @@ def jogodavelha():
       p9 = "[X]" if ultimo == "[O]" else "[O]"
       ultimo = "[X]" if ultimo == "[O]" else "[O]"
 
-    elif vitorioso != "[ ]" and char == chr(13):
-      os.system('clear')
-      print ("=" * 36)
-      print(f'''{" " * 13}{p7}{p8}{p9} |
-{" " * 13}{p4}{p5}{p6} |Vitoria: {vitorioso}
-{" " * 13}{p1}{p2}{p3} |''')
-      print ("=" * 36)
-      print("\n", " " * 5, "Jogar Novamente? [Y/N]")
-      char = getch()
-      
-      if char in ["y", "n"]:
-        if char == "y":
-          if vitorioso == "[X]":
-            x_win = x_win + 1
-          elif vitorioso == "[O]":
-            o_win = o_win + 1
-          
-          p1 = p2 = p3 = p4 = p5 = p6 = p7 = p8 = p9 = "[ ]"
-          ultimo = "[X]"
-          vitorioso = "[ ]"
-          
-        else:
-          break
+    
+    
     # #
       
 # Jogar
