@@ -20,24 +20,56 @@ def menu():
     else:
       if select == "0": #Sair Menu Principal
         break
+        
       elif select == "1": #Historico = - = - = - = - = - = - = - = - = - =
+        msgerro = ""
         while True:
           os.system('clear')
           print('=' * 36, "\n", " " * 12, "HISTORICO")
           print('=' * 36)
+          print('[0]-Sair [1]-Sel. [2]-Remoção')
+          print(f'{msgerro}')
           #36L X 15A
+          
           for indice, item in enumerate(lista):
-            print(f'{str(indice+1)} {lista[indice]["nome"]} {lista[indice]["data"]}')
+            print(f'[{str(indice+1)}] {item["nome"]} {item["data"]}')
+          
+          
           select = getsel("Selecione: ")
-          break
+
+          if select not in ["0","1","2"]:
+            msgerro = "=-  !Selecione Uma Opção Valida!  -="
+          else:
+            if select == "0": # Sair # # # # # # # # # # # # # # # # #  
+              break
+            if select == "2": # Remoção # Remoção # # # # # # # # # # # #
+              msgerro = ""
+              while True:
+                os.system('clear')
+                print('=' * 36, "\n", " " * 12, "HISTORICO")
+                print('=' * 36)
+                print(f'{msgerro}')
+                #36L X 15A
+                for indice, item in enumerate(lista):
+                  print(f'[{str(indice+1)}] {item["nome"]} {item["data"]}')
+                  
+                select = getsel("Selecione: ")
+
+                if select not in ["0"]:
+                  msgerro = "=-  !Selecione Uma Opção Valida!  -="
+                else:
+                  if select == "0":
+                    break
+
+          
       elif select == "2": #Inserir Tarefa # = - = - = - = - = - = - = - = - = - =
-        temp_task = [{"nome": "","data" : ""}]
+        temp_task = {"nome": "","data" : ""}
         msgerro = ""
         while True:
           os.system('clear')
           print('='*36, "\n", " "*10, "INSER. TAREFA")
           print('='*36)
-          print(f'''Nome:[{temp_task[-1]["nome"].ljust(12)}]Data:[{temp_task[-1]["data"].ljust(10)}]
+          print(f'''Nome:[{temp_task["nome"].ljust(12)}]Data:[{temp_task["data"].ljust(10)}]
 {msgerro}
 [0] -Sair
 [1] -Ins. Nome
@@ -54,16 +86,16 @@ def menu():
               os.system('clear')
               print('='*36, "\n", " "*10, "INSER. TAREFA")
               print('='*36)
-              print(f'''Nome:[{temp_task[-1]["nome"].ljust(12)}]Data:[{temp_task[-1]["data"].ljust(10)}]
+              print(f'''Nome:[{temp_task["nome"].ljust(12)}]Data:[{temp_task["data"].ljust(10)}]
             ''')
-              temp_task[-1]["nome"] = getsel("Insira o Nome: ")
+              temp_task["nome"] = getsel("Insira o Nome: ")
             elif select == "2": # Inserir Data
               os.system('clear')
               print('='*36, "\n", " "*10, "INSER. TAREFA")
               print('='*36)
-              print(f'''Nome:[{temp_task[-1]["nome"].ljust(12)}]Data:[{temp_task[-1]["data"].ljust(10)}]
+              print(f'''Nome:[{temp_task["nome"].ljust(12)}]Data:[{temp_task["data"].ljust(10)}]
             ''')
-              temp_task[-1]["data"] = getsel("Insira a Data: ")
+              temp_task["data"] = getsel("Insira a Data: ")
             elif select == "3": # Inserir Tarefa
               lista.append(temp_task)
               break
