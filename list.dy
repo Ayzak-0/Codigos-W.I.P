@@ -1,8 +1,9 @@
 import os
+# # # # # # # # # # # # # # #
 def getsel(mensagem):
   select = input(mensagem)
   return select
-# # # # # # # # # # # # #
+# # # # # # # # # # # # # # #
 def menu():
   lista = []
   while True:
@@ -49,19 +50,29 @@ def menu():
                 print('=' * 36, "\n", " " * 12, "HISTORICO")
                 print('=' * 36)
                 print(f'{msgerro}')
+                print(" "*12, 'Sel. Remoção')
                 #36L X 15A
                 for indice, item in enumerate(lista):
                   print(f'[{str(indice+1)}] {item["nome"]} {item["data"]}')
                   
                 select = getsel("Selecione: ")
-
-                if select not in ["0"]:
-                  msgerro = "=-  !Selecione Uma Opção Valida!  -="
-                else:
+                
+                try:
                   if select == "0":
+                    msgerro = ""
                     break
-
-          
+                  elif 1 <= int(select) <= (len(lista)):
+                    try:
+                      lista.pop(int(select)-1)
+                    except IndexError:
+                      msgerro = "=- Selecione Apenas Items da Lista! -="
+                  else:
+                    msgerro = "=-    Selecio Um Item Valido!     -="
+                except ValueError:
+                  msgerro = "=-    Selecio Apenas Numeros!     -="
+            if select == "1": # # # Seleção W.I.P
+              break
+            
       elif select == "2": #Inserir Tarefa # = - = - = - = - = - = - = - = - = - =
         temp_task = {"nome": "","data" : ""}
         msgerro = ""
